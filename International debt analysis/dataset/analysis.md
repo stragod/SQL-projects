@@ -60,3 +60,18 @@ An interesting observation in the above finding is that there is a huge differen
 
 We can investigate this a bit more so as to find out which country owes the highest amount of debt in the category of long term debts (DT.AMT.DLXF.CD). Since not all the countries suffer from the same kind of economic disturbances, this finding will allow us to understand that particular country's economic condition a bit more specifically.
 
+SELECT 
+    country_me, 
+    Series_name
+FROM ids
+WHERE debt = (SELECT 
+                 MAX(debt)
+             FROM ids
+             WHERE Series_code LIKE 'DT.AMT.DLXF.CD');
+## The most common reason for debt grant
+what is the most common indicator in which the countries owe their debt?
+SELECT Series_code, COUNT(Series_code) AS indicator_count
+FROM ids
+GROUP BY indicator_code
+ORDER BY indicator_count DESC, indicator_code DESC
+LIMIT 20;
