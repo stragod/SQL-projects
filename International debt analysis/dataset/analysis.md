@@ -7,31 +7,31 @@ We are going to find the answer to questions like:
 - Which country owns the maximum amount of debt?
 - What is the average amount of debt owed by countries and the reason for the loan grant?
 
-###### 1. we look at how the data looks like 
+## 1. we look at how the data looks like 
 select * from ids
 limit 10;
 
-###### 2. Number of distinct countries that have debts
+## 2. Number of distinct countries that have debts
 Without understanding the count of distinct countries in the data, we will not be able to perform our analyses correctly. So we extract the number of unique countries present in the table.
 
 SELECT COUNT(DISTINCT(country_me)) as distinct_countries
 FROM ids;
 
-###### 3. Finding out distinct debt grant reasons
+## 3. Finding out distinct debt grant reasons
 Knowing about these various debt grant reasons can help us understand the areas in which a country is indebted to.
 
 SELECT DISTINCT(Series_code) AS debt_indicators
 FROM ids
 ORDER BY 1;
 
-###### 4. Finding out total amount of debt owned by the countries
+## 4. Finding out total amount of debt owned by the countries
 the total debt owed by each country overall gives us an idea about the amount of debt owed by different countries. This would help us to unedrstand the standings of different countries.
 
 SELECT 
 ROUND(SUM(debt)/1000000, 2) AS total_debt
 FROM ids;
 
-###### 5. Finding the country with the highest debt
+## 5. Finding the country with the highest debt
 Now that we have the exact total of the amounts of debt owed by several countries,we can now find the country that owns the highest amount of debt. this debt is found by adding different debts owed by a country across several categories. This will help to understand more about the country in terms of its socio-economic scenarios
 
 SELECT 
@@ -41,7 +41,7 @@ GROUP BY country_me
 ORDER BY total_debt DESC
 LIMIT 1;
 
-###### 6. Average debt among all the debt grant
+## 6. Average debt among all the debt grant
 Now we find the avergae debt each country owes
 
 SELECT 
@@ -53,7 +53,7 @@ GROUP BY Series_code, Series_name
 ORDER BY average_debt DESC
 LIMIT 10;
 
-###### 7. highest amount of principal payments
+## 7. highest amount of principal payments
 We can see that the indicator DT.AMT.DLXF.CD tops the chart of average debt. This category includes repayment of long term debts. Countries take on long-term debt to acquire immediate capital.
 
 An interesting observation in the above finding is that there is a huge difference in the amounts of the indicators after the second one. This indicates that the first two indicators might be the most severe categories in which the countries owe their debts.
