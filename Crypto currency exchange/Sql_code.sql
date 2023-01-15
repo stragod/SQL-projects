@@ -1,4 +1,4 @@
-1. To analyze the trading volume of different currency pairs on a cryptocurrency exchange.
+ 1. To analyze the trading volume of different currency pairs on a cryptocurrency exchange.
 
 WITH trading_volume AS (
     SELECT 
